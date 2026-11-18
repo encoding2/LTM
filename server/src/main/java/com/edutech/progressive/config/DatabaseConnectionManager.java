@@ -28,7 +28,7 @@ public class DatabaseConnectionManager {
         } catch (IOException e) {
             throw new RuntimeException("Error loading application.properties", e);
         }
-    }   // <-- loadProperties() closes here
+    } 
 
     public static Connection getConnection() throws SQLException {
         String url = properties.getProperty("spring.datasource.url");
