@@ -1,24 +1,27 @@
 package com.edutech.progressive.entity;
-import java.util.Date;
-public class Doctor {
+
+import java.util.Comparator;
+
+public class Doctor implements Comparable<Doctor> {
+
     private int doctorId;
     private String fullName;
     private String specialty;
     private String contactNumber;
     private String email;
-    private int yearOfExperience;
+    private int yearsOfExperience;
 
     public Doctor() {
     }
 
-    public Doctor(int doctorId, String fullName, String specialty, String contactNumber, String email,
-            int yearOfExperience) {
+    public Doctor(int doctorId, String fullName, String specialty, String contactNumber,
+                  String email, int yearsOfExperience) {
         this.doctorId = doctorId;
         this.fullName = fullName;
         this.specialty = specialty;
         this.contactNumber = contactNumber;
         this.email = email;
-        this.yearOfExperience = yearOfExperience;
+        this.yearsOfExperience = yearsOfExperience;
     }
 
     public int getDoctorId() {
@@ -61,13 +64,16 @@ public class Doctor {
         this.email = email;
     }
 
-    public int getYearOfExperience() {
-        return yearOfExperience;
+    public int getYearsOfExperience() {
+        return yearsOfExperience;
     }
 
-    public void setYearOfExperience(int yearOfExperience) {
-        this.yearOfExperience = yearOfExperience;
+    public void setYearsOfExperience(int yearsOfExperience) {
+        this.yearsOfExperience = yearsOfExperience;
     }
 
-    
+    @Override
+    public int compareTo(Doctor other) {
+        return Comparator.comparingInt(Doctor::getYearsOfExperience).compare(this, other);
+    }
 }
