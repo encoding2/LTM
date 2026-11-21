@@ -1,6 +1,9 @@
 package com.edutech.progressive.entity;
+
 import java.util.Date;
-public class Patient {
+
+public class Patient implements Comparable<Patient> {
+
     private int patientId;
     private String fullName;
     private Date dateOfBirth;
@@ -9,11 +12,9 @@ public class Patient {
     private String address;
 
     public Patient() {
-
     }
 
-    public Patient(int patientId, String fullName, Date dateOfBirth, String contactNumber, String email,
-            String address) {
+    public Patient(int patientId, String fullName, Date dateOfBirth, String contactNumber, String email, String address) {
         this.patientId = patientId;
         this.fullName = fullName;
         this.dateOfBirth = dateOfBirth;
@@ -70,5 +71,8 @@ public class Patient {
         this.address = address;
     }
 
-    
+    @Override
+    public int compareTo(Patient otherPatient) {
+        return this.getFullName().compareTo(otherPatient.getFullName());
+    }
 }
